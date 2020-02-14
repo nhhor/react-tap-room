@@ -10,11 +10,12 @@ function Header(){
   return (
     <div className="mainHeader">
       <p className="mainHeaderH1">React TaP Room</p>
-      <p className="mainHeaderH3"><Link to="/">Home</Link> | <Link to="/AboutUs">About Us</Link></p>
+      <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/AboutUs">About Us</Link></p>
 
       <style jsx>{`
           .mainHeader {
-            z-index: 0;
+            height: 10vh;
+            z-index: 99;
             background-color: rgba${imageArray[imageNumber]};
             border-bottom-left-radius:  25%;
             border-bottom-right-radius: 25%;

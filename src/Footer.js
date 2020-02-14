@@ -15,6 +15,7 @@ function Footer(){
       <style jsx>{`
           .mainFooter {
             z-index: 0;
+            height: 5vh;
             background-color: rgba${imageArray[imageNumber]};
             border-top-left-radius:  25%;
             border-top-right-radius: 25%;

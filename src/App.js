@@ -4,7 +4,7 @@ import './App.css';
 
 import Header from './Header';
 import Footer from './Footer';
-import Home from './Home';
+import KegList from './KegList';
 import AboutUs from './AboutUs';
 
 import { Switch, Route } from 'react-router-dom';
@@ -18,10 +18,13 @@ function App() {
         <Header/>
       </div>
 
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/aboutus' component={AboutUs} />
-      </Switch>
+      <div className="App-body">
+        <Switch>
+          <Route exact path='/' component={KegList} />
+          <Route path='/aboutus' component={AboutUs} />
+        </Switch>
+      </div>
+
 
       <div className="App-footer">
         <Footer/>
@@ -29,7 +32,7 @@ function App() {
 
       <style jsx>{`
           .App-header {
-            min-height: 10vh;
+            height: 10vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,8 +42,14 @@ function App() {
             color: white;
           }
 
+          .App-body {
+            height: 85vh;
+            overflow-y: auto;
+          }
+
+
           .App-footer {
-            min-height: 5vh;
+            height: 5vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,6 +57,7 @@ function App() {
             font-size: calc(8px + 2vmin);
             margin: 0px;
             color: white;
+
           }
           `}</style>
 
