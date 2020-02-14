@@ -29,24 +29,25 @@ function App() {
 
       <style jsx>{`
           .App-header {
+            min-height: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(8px + 3vmin);
+            margin: 0px;
+            color: white;
+          }
+
+          .App-footer {
             min-height: 5vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: calc(10px + 2vmin);
+            font-size: calc(8px + 2vmin);
             margin: 0px;
             color: white;
-          }
-
-          .App-footer{
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: red;
-            color: white;
-            text-align: center;
           }
           `}</style>
 
