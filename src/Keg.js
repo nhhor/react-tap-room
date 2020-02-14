@@ -8,17 +8,17 @@ function Keg(props){
     <div id={'keg' + props.kegID} className='kegBox'>
 
 
-        <p className='kegText kegName'>{props.name}</p>
-        <p className='kegText kegType'>{props.type}</p>
-        <p className='kegText kegBrand'>{props.brand}</p>
-        <p className='kegText kegAlcoholContent'>{props.alcoholContent}% abv</p>
-        <p className='kegText kegPrice'>${props.price}/pint</p>
-        <p className='kegText kegStock'>{props.stock} pints</p>
-        <p className='kegText kegDescription'>{props.description}</p>
-        <button>Sell</button><img src={KegIcon} className="kegIcon" alt="kegIcon" />
+      <p className='kegText kegName'>{props.name}</p>
+      <p className='kegText kegType'>{props.type}</p>
+      <p className='kegText kegBrand'>{props.brand}</p>
+      <p className='kegText kegAlcoholContent'>{props.alcoholContent}% abv</p>
+      <p className='kegText kegPrice'>${props.price}/pint</p>
+      <p className='kegText kegStock'>{props.stock} pints</p>
+      <p className='kegText kegDescription'>{props.description}</p>
+      <button>Sell</button><img src={KegIcon} className="kegIcon" alt="kegIcon" />
 
 
-        <style jsx>{`
+      <style jsx>{`
           .kegText {
             color: #800303;
             margin: 0px;
@@ -49,7 +49,7 @@ function Keg(props){
           }
 
           `}</style>
-      </div>
+    </div>
   );
 }
 
