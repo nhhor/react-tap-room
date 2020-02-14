@@ -14,36 +14,44 @@ function App() {
   return (
     <div className="App">
 
-      <Header/>
+      <div className="App-header">
+        <Header/>
+      </div>
 
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/aboutus' component={AboutUs} />
       </Switch>
 
-      <div className="footer">
-
+      <div className="App-footer">
         <Footer/>
       </div>
 
       <style jsx>{`
-      .App {
-        color: green;
-      }
+          .App-header {
+            min-height: 5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(10px + 2vmin);
+            margin: 0px;
+            color: white;
+          }
 
-      .footer{
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: red;
-      color: white;
-      text-align: center;
-    }
-      `}</style>
+          .App-footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+          }
+          `}</style>
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 
-export default App;
+  export default App;

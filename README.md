@@ -38,6 +38,9 @@ This project was made as part of a coding project for Noah Horwitz, a student at
 * As a patron, I want to have **kegs prices to be color-coded** for easy readability. Perhaps based on their price (greater or less than $5 per pint, perhaps) or the particular style of beer or kombucha.
 * As a patron, I want to use the **alcohol content property to display stronger beers differently** than weaker beers.
 
+## React Component Tree:
+![React Component Tree](https://raw.githubusercontent.com/nhhor/react-tap-room/master/public/component-tree.png "React Component Tree")
+
 ## References:
 * Component & Route Structure designed at [Draw.io](https://www.draw.io/).
 

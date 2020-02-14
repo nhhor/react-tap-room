@@ -7,64 +7,46 @@ import { Link } from 'react-router-dom';
 
 function Header(){
 
-  let imageArray = ['(99, 99, 88, .25)', '(99, 88, 99, .25)', '(88, 99, 99, .25)', '(99, 99, 99, .25)'];
+  let imageArray = ['(99, 99, 88, .75)', '(99, 88, 99, .75)', '(88, 99, 99, .75)', '(99, 99, 99, .75)'];
 
   let imageNumber = (Math.round(Math.random()*3));
 
   return (
 
-    <div className="">
-      <h1 className="mainH1">React Tap Room</h1>
-      <h3 className="mainH3"><Link to="/">Home</Link> | <Link to="/AboutUs">About Us</Link></h3>
-      <div className="mainHeader">
+    <div className="mainHeader">
+      <p className="mainHeaderH1">React Tap Room</p>
+      <p className="mainHeaderH3"><Link to="/">Home</Link> | <Link to="/AboutUs">About Us</Link></p>
 
         <style jsx>{`
       .mainHeader {
         z-index: 0;
         background-color: rgba${imageArray[imageNumber]};
-        // opacity: 1;
-        // transition: opacity 1000ms;
-        // border-radius: 25px;
         border-bottom-left-radius:  25%;
         border-bottom-right-radius: 25%;
-        height: 15vh;
-        background-size: cover;
-        margin-top: -7px;
-        animation: header_fade_effect 60s infinite;
+        width: 90%;
+        margin: 0px;
+        animation: header_fade_effect 4s 1;
       }
+
+.mainHeaderH1, .mainHeaderH3 {
+  margin: 0px;
+}
+
 
       @keyframes header_fade_effect {
-        0%   { opacity: 0; }
-        5%   { opacity: 1; }
-        100% { opacity: 1; }
+        0%   { opacity: 0; width:90%;}
+        25%   { width:70%;}
+        50%   { width:200%;}
+        75%   { width:70%;}
+        100% { opacity: 1; width:90%;}
+        from {transform: rotateY(0deg);}
+        to {transform: rotateY(359deg);}
       }
 
-      .mainH1 {
-        z-index: 1;
-        color: blue;
-        position: absolute;
-        top: 0px;
-        left: 5%;
-        width: 90%;
-        background: rgba(255, 255, 255, .5);
-        padding: 15px;
-        border-radius: 25px;
-      }
-      .mainH3 {
-        z-index: 1;
-        color: blue;
-        position: absolute;
-        top: 80px;
-        left: 5%;
-        width: 45%;
-        background: rgba(255, 255, 255, .5);
-        padding: 15px;
-        border-radius: 25px;
-      }
+
 
       `}</style>
       </div>
-    </div>
 
   );
 }
