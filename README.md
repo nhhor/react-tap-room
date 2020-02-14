@@ -1,76 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Application: **React Tap Room**
 
-## Available Scripts
+#### By Noah Horwitz
 
-In the project directory, you can run:
+###### _First published 2020-02-14_
 
-### `npm start`
+## Description:
+This project was made as part of a coding project for Noah Horwitz, a student at _[Epicodus](http://www.epicodus.com)_, a vocational school for technology careers based in Portland, OR. The project is designed to create a tap room app in React where a bar or kombucha store can track their kegs.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- The fully deployed project is hosted on GH-Pages [HERE](https://nhhor.github.io/react-tap-room). -->
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Setup/Installation instructions:
+* Click the `Clone or download` button and copy the link provided.
+* Open your terminal application (assuming GIT Scripts AND node.js (with NPM) have been installed on your system) and type `git clone (link)`.
+* In the terminal using the `cd`... command, navigate to the newly created repository and run `npm install`.
+* Then in the terminal, run `npm run start`.
+* The app should then automatically open in a browser window.
 
 
+## Technologies Used:
+> `JavaScript`
+> `React`
+> `CSS`
+> `HTML`
+> `Node Package Manager`
+> `WebPack`
 
-## [Deploying React Applications to Github Pages](https://medium.com/the-andela-way/how-to-deploy-your-react-application-to-github-pages-in-less-than-5-minutes-8c5f665a2d2a)
+## Known Bugs:
+* None
 
+## User Stories:
+* As a patron, I want to see a list/**menu of all available kegs**. For each keg, I need to see its `name`, `type`, `brand`, `alcoholContent`, and , `price` (or perhaps something like flavor for a kombucha store).
+* As an employee, I want to fill out a **form when I tap a new keg to add it to the list**. (Don't worry about authenticating employee user accounts yet.)
+* As an employee, I want the option to **edit a keg's properties after entering them** just in case I make a mistake.
+* As a patron and/or employee, I want to see **how many pints are left in a keg**. (Hint: A full keg has roughly 124 pints).
+* As an employee, I want to be able to **click a button next to a keg whenever I sell a pint** of it. This should decrease the number of pints left by 1.
+* As an employee, I want to be able to **see kegs with less than 10** pints left so I can be ready to change them.
+* As a patron, I want to have **kegs prices to be color-coded** for easy readability. Perhaps based on their price (greater or less than $5 per pint, perhaps) or the particular style of beer or kombucha.
+* As a patron, I want to use the **alcohol content property to display stronger beers differently** than weaker beers.
 
+## References:
+* Component & Route Structure designed at [Draw.io](https://www.draw.io/).
 
-(~NH~)[https://css-tricks.com/working-with-refs-in-react/]
+## Support and contact details
+Contact [example@sample.com](mailto:example@sample.com)
+
+## License
+_This This repository is copyright (C) 2019 by Noah Horwitz and licensed under the GNU General Public License v3.0 [gpl-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)_.

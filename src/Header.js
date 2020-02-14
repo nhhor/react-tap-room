@@ -14,7 +14,7 @@ function Header(){
   return (
 
     <div className="">
-      <h1 className="mainH1">An Agency</h1>
+      <h1 className="mainH1">React Tap Room</h1>
       <h3 className="mainH3"><Link to="/">Home</Link> | <Link to="/AboutUs">About Us</Link></h3>
       <div className="mainHeader">
 
