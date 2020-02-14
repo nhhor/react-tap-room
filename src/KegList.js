@@ -5,17 +5,17 @@ import Keg from './Keg';
 
 const kegList = [
   {
-    tapNumber: 0,
+    kegID: 0,
     name: 'Hefe',
     type: 'American-style hefeweizen',
     brand: 'Widmer Brothers',
     alcoholContent: 4.9,
     price: 3.99,
     stock: 124,
-    description: "It's ok."
+    description: 'It\'s ok.'
   },
   {
-    tapNumber: 1,
+    kegID: 1,
     name: 'Wit',
     type: 'Belgian Wit Ale',
     brand: 'Pfriem',
@@ -23,6 +23,16 @@ const kegList = [
     price: 3.98,
     stock: 119,
     description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.'
+  },
+  {
+    kegID: 2,
+    name: 'Otra Vez',
+    type: 'Belgian Wit Ale',
+    brand: 'Sierra Nevada',
+    alcoholContent: 4.9,
+    price: 4.01,
+    stock: 99,
+    description: 'The bright lime flavor helps wake up the palate while the mild sweetness of the agave rounds out the tangy zip of the citrus fruit.'
   },
 
 ];
@@ -32,7 +42,7 @@ function KegList(){
     <div className="marketClass">
       <h2 className="kegListHeader"> Market Schedule </h2>
       {kegList.map((keg, index) =>
-        <Keg tapNumber={index}
+        <Keg kegID={index}
           name={keg.name}
           type={keg.type}
           brand={keg.brand}
@@ -54,8 +64,8 @@ function KegList(){
             border-bottom: 1px solid lightgrey;
           }
           `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default KegList;
+export default KegList;

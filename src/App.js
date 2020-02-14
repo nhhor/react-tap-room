@@ -5,6 +5,7 @@ import './App.css';
 import Header from './Header';
 import Footer from './Footer';
 import KegList from './KegList';
+import Error404 from './Error404';
 import AboutUs from './AboutUs';
 
 import { Switch, Route } from 'react-router-dom';
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={KegList} />
           <Route path='/aboutus' component={AboutUs} />
+          <Route component={Error404} />
         </Switch>
       </div>
 
@@ -61,8 +63,8 @@ function App() {
           }
           `}</style>
 
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default App;
+export default App;

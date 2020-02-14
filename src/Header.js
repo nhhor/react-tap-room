@@ -41,8 +41,8 @@ function Header(){
           }
 
           `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default Header;
+export default Header;
