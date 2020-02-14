@@ -1,11 +1,11 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 
 import Header from './Header';
 import Footer from './Footer';
 import KegList from './KegList';
 import Error404 from './Error404';
+
 import AboutUs from './AboutUs';
 
 import { Switch, Route } from 'react-router-dom';
