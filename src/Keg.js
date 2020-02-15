@@ -18,10 +18,7 @@ function Keg(props){
     count += 1;
 
     console.log('Math yeilds:', math);
-
-
     document.getElementById("magic"+kegTargetId).innerHTML = math;
-
 
   }
 
@@ -31,7 +28,7 @@ function Keg(props){
 
       <ul>
 
-        <button id={'kegButton' + props.kegID} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" />!</button>
+        <button id={'kegButton' + props.kegID} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button>
 
         <li className='kegText kegName'>{props.name}</li>
         <li className='kegText kegType'>{props.type}</li>
@@ -54,10 +51,18 @@ function Keg(props){
           }
 
           .kegSellButton {
-            float: right;
+            color: teal;
+            // float: right;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(11, 11, 11, .5);
+            border-radius: 25%;
+
           }
 
           .kegBox {
+            position: relative;
             background-color: rgba(166, 250, 118, .1);
             padding: 10px;
             margin: 10px;
