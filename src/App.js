@@ -6,7 +6,8 @@ import Footer from './Footer';
 import KegList from './KegList';
 import Error404 from './Error404';
 
-import AboutUs from './AboutUs';
+import NewKeg from './NewKeg';
+import EditKeg from './EditKeg';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -22,7 +23,8 @@ function App() {
       <div className="App-body">
         <Switch>
           <Route exact path='/' component={KegList} />
-          <Route path='/aboutus' component={AboutUs} />
+          <Route path='/newkeg' component={NewKeg} />
+          <Route path='/editkeg' component={EditKeg} />
           <Route component={Error404} />
         </Switch>
       </div>
@@ -39,7 +41,7 @@ function App() {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: calc(8px + 3vmin);
+            font-size: calc(8px + 2vmin);
             margin: 0px;
             color: white;
           }
@@ -56,7 +58,7 @@ function App() {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: calc(8px + 2vmin);
+            font-size: calc(8px + 1vmin);
             margin: 0px;
             color: white;
 

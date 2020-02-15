@@ -26,7 +26,7 @@ This project was made as part of a coding project for Noah Horwitz, a student at
 > `WebPack`
 
 ## Known Bugs:
-* None
+* Currently, project is stateless and 'sold pint button' updates pints available as a DOM traversal, not a state change.
 
 ## User Stories:
 * As a patron, I want to see a list/**menu of all available kegs**. For each keg, I need to see its `name`, `type`, `brand`, `alcoholContent`, and , `price` (or perhaps something like flavor for a kombucha store).

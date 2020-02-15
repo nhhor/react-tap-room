@@ -36,3 +36,16 @@ body {
     transform: rotate(360deg);
   }
 }
+
+a:link {
+  color: #0080ff;
+}
+a:visited {
+  color: #3399ff;
+}
+a:hover {
+  color:  #66b3ff;
+}
+a:active {
+  color:  #99ccff;
+}
