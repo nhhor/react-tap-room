@@ -9,7 +9,7 @@ function Header(){
 
   return (
     <div className="mainHeader">
-      <p className="mainHeaderH1">React TaP Room</p>
+      <p className="mainHeaderH1">React Tap Room</p>
       <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/AboutUs">About Us</Link></p>
 
       <style jsx>{`

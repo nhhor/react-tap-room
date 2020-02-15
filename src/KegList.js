@@ -1,7 +1,7 @@
 import React from 'react';
 import Keg from './Keg';
 
-const kegList = [
+let kegListArray = [
   {
     kegID: 0,
     name: 'Hefe',
@@ -71,7 +71,7 @@ function KegList(){
     <div className="">
       <h2 className="kegListHeader">Keg List</h2>
       <div className="kegListClass">
-        {kegList.map((keg, index) =>
+        {kegListArray.map((keg, index) =>
           <Keg kegID={index}
             name={keg.name}
             type={keg.type}
@@ -93,7 +93,7 @@ function KegList(){
             align-items: stretch;
 
           }
-          
+
           .kegListHeader{
             margin: 0px;
             text-align: center;
