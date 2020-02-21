@@ -19,20 +19,22 @@ class App extends React.Component {
     super(props);
     this.state = {
       kegList: [{
+          id: 0,
           name: 'Hefe',
           type: 'American-style hefeweizen',
           brand: 'Widmer Brothers',
-          alcoholContent: 4.9,
-          price: 3.99,
+          alcoholContent: '4.9',
+          price: '3.99',
           stock: 124,
           description: 'It\'s ok.'
         },
         {
+          id: 1,
           name: 'Wit',
           type: 'Belgian Wit Ale',
           brand: 'Pfriem',
-          alcoholContent: 5.1,
-          price: 3.98,
+          alcoholContent: '5.1',
+          price: '3.98',
           stock: 119,
           description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.'
         }],
@@ -43,7 +45,6 @@ class App extends React.Component {
   }
 
   handleKegNew(newKeg){
-    console.log('Hiiiii, guyyyyyy.');
     var newKegList = this.state.kegList.slice();
     newKegList.push(newKeg);
     this.setState({kegList: newKegList});

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 import './App.css';
 
 function NewKeg(props){
@@ -15,7 +16,7 @@ function NewKeg(props){
   function handleNewKegFormSubmission(event) {
     event.preventDefault();
 
-    props.onKegNew({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value});
+    props.onKegNew({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value, id: v4()});
 
     _name = '';
     _type = '';

@@ -24,18 +24,18 @@ function Keg(props){
 
 
   return (
-    <div id={'kegBox' + props.kegID} className='kegBox'>
+    <div id={'kegBox' + props.id} className='kegBox'>
 
       <ul>
 
-        <button id={'kegButton' + props.kegID} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button>
+        <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button>
 
         <li className='kegText kegName'>{props.name}</li>
         <li className='kegText kegType'>{props.type}</li>
         <li className='kegText kegBrand'>{props.brand}</li>
         <li className='kegText kegAlcoholContent'>{props.alcoholContent}% abv</li>
         <li className='kegText kegPrice'>${props.price}/pint</li>
-        <li className='kegText kegStock'><span id={'magic' + props.kegID}>{props.stock}</span> pints</li>
+        <li className='kegText kegStock'><span id={'magic' + props.id}>{props.stock}</span> pints</li>
         <li className='kegText kegDescription'>{props.description}</li>
 
       </ul>
@@ -78,7 +78,7 @@ function Keg(props){
             animation: kegIconSpin infinite 5s linear;
           }
 
-          @keyframes kegIconSpin {
+          @idframes kegIconSpin {
             from {transform: rotate(0deg);}
             to {transform: rotate(360deg);}
           }
@@ -89,13 +89,13 @@ function Keg(props){
   }
 
   Keg.propTypes = {
-    kegID: PropTypes.number,
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    brand: PropTypes.string,
-    alcoholContent: PropTypes.string,
-    price: PropTypes.string,
-    stock: PropTypes.number
+    brand: PropTypes.string.isRequired,
+    alcoholContent: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    stock: PropTypes.number.isRequired
   };
 
 
