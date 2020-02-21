@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
 import KegIcon from './KegIcon.svg';
 
 function Keg(props){
@@ -9,7 +8,6 @@ function Keg(props){
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(props.tappedOn._d);
     let kegTarget = e.currentTarget.id;
     let kegTargetId = kegTarget.slice(9);
     let math = (props.stock - count);
@@ -30,7 +28,7 @@ function Keg(props){
         <p className='divGrid4 kegDescription'>{props.description}</p>
         <p className='divGrid5 kegAlcoholContent'>{props.alcoholContent}% abv</p>
         <p className='divGrid6 kegPrice'>${props.price}/pint</p>
-        <p className='divGrid7 kegTappedOn'>Tapped {displayTimeOpen(props.tappedOn)} ago.</p>
+        <p className='divGrid7 kegTappedOn'>Tapped {props.formattedWaitTime} ago.</p>
         <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
 
 
@@ -129,20 +127,16 @@ function Keg(props){
   );
 }
 
-function displayTimeOpen(tappedOn) {
-  return tappedOn.from(new Moment(), true);
-}
-
 Keg.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
   alcoholContent: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
   description: PropTypes.string,
-  tappedOn: PropTypes.instanceOf(Moment).isRequired,
-  stock: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired,
+  formattedWaitTime: PropTypes.string, //removed 'isRequired' here only for pre-seeded data to not throw an error.
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  stock: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 

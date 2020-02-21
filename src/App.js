@@ -1,9 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './App.css';
 import Moment from 'moment';
-
+import './App.css';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -74,8 +73,13 @@ class App extends React.Component {
     this.setState({kegList: newkegList});
   }
 
+  componentWillUnmount(){
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
   handleKegNew(newKeg){
     var newKegList = this.state.kegList.slice();
+    newKeg.formattedWaitTime = (newKeg.tappedOn).fromNow(true);
     newKegList.push(newKeg);
     this.setState({kegList: newKegList});
   }
