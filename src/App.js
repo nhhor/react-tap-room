@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './App.css';
+import Moment from 'moment';
+
 
 import Header from './Header';
 import Footer from './Footer';
@@ -19,24 +21,26 @@ class App extends React.Component {
     super(props);
     this.state = {
       kegList: [{
+        alcoholContent: '4.9',
+        brand: 'Widmer Brothers',
+        description: 'It\'s ok.',
         id: 0,
         name: 'Hefe',
-        type: 'American-style hefeweizen',
-        brand: 'Widmer Brothers',
-        alcoholContent: '4.9',
         price: '3.99',
         stock: 124,
-        description: 'It\'s ok.'
+        tappedOn: new Moment().subtract(2, 'days'),
+        type: 'American-style hefeweizen'
       },
       {
+        alcoholContent: '5.1',
+        brand: 'Pfriem',
+        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
         id: 1,
         name: 'Wit',
-        type: 'Belgian Wit Ale',
-        brand: 'Pfriem',
-        alcoholContent: '5.1',
         price: '3.98',
         stock: 119,
-        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.'
+        tappedOn: new Moment().subtract(1, 'weeks'),
+        type: 'Belgian Wit Ale'
       }],
       kegFocus: 1
     };
