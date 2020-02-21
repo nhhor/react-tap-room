@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
-function NewKeg(){
+function NewKeg(props){
 
   let _name = null;
   let _type = null;
@@ -16,6 +17,8 @@ function NewKeg(){
     console.log(_name.value);
     console.log(_type.value);
     console.log(_brand.value);
+
+    props.onKegNew({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: _alcoholContent.value, price: _price.value, stock: _stock.value, description: _description.value});
 
     _name = '';
     _type = '';
@@ -41,6 +44,8 @@ function NewKeg(){
             type="text"
             id="name"
             name="name"
+            placeholder='Beer name (required)'
+            required
             ref={(input) => {_name = input;}}/>
         </fieldset>
 
@@ -51,6 +56,8 @@ function NewKeg(){
             type="text"
             id="type"
             name="type"
+            placeholder='Beer type (required)'
+            required
             ref={(input) => {_type = input;}}/>
         </fieldset>
 
@@ -61,6 +68,8 @@ function NewKeg(){
             type="text"
             id="brand"
             name="brand"
+            placeholder='Beer brand (required)'
+            required
             ref={(input) => {_brand = input;}}/>
         </fieldset>
 
@@ -71,6 +80,8 @@ function NewKeg(){
             type="text"
             id="alcoholContent"
             name="alcoholContent"
+            placeholder='Alcohol content (required)'
+            required
             ref={(input) => {_alcoholContent = input;}}/>
         </fieldset>
 
@@ -82,6 +93,8 @@ function NewKeg(){
             type="text"
             id="price"
             name="price"
+            placeholder='Price per pint (required)'
+            required
             ref={(input) => {_price = input;}}/>
         </fieldset>
 
@@ -93,6 +106,8 @@ function NewKeg(){
             type="text"
             id="stock"
             name="stock"
+            placeholder='Stock (required)'
+            required
             ref={(input) => {_stock = input;}}/>
         </fieldset>
 
@@ -103,6 +118,7 @@ function NewKeg(){
             className='inputClass'
             id="description"
             name="description"
+            placeholder='Description'
             ref={(input) => {_description = input;}}/>
 
         </fieldset>
@@ -135,19 +151,14 @@ function NewKeg(){
           margin-left: 6%;
           margin-right: 3%;
         }
-
-
         `}</style>
-
-
-
-
-
     </div>
   );
 }
 
-
+NewKeg.propTypes = {
+  onKegNew: PropTypes.func
+};
 
 
 export default NewKeg;

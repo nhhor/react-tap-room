@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
 import PropTypes from 'prop-types';
+import './App.css';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -18,15 +18,35 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kegList: [],
+      kegList: [{
+          name: 'Hefe',
+          type: 'American-style hefeweizen',
+          brand: 'Widmer Brothers',
+          alcoholContent: 4.9,
+          price: 3.99,
+          stock: 124,
+          description: 'It\'s ok.'
+        },
+        {
+          name: 'Wit',
+          type: 'Belgian Wit Ale',
+          brand: 'Pfriem',
+          alcoholContent: 5.1,
+          price: 3.98,
+          stock: 119,
+          description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.'
+        }],
       kegFocus: 1
     };
     this.handleKegFocusClick = this.handleKegFocusClick.bind(this);
     this.handleKegNew = this.handleKegNew.bind(this);
   }
 
-  handleKegNew(){
-console.log('Hiiiii, guyyyyyy.');
+  handleKegNew(newKeg){
+    console.log('Hiiiii, guyyyyyy.');
+    var newKegList = this.state.kegList.slice();
+    newKegList.push(newKeg);
+    this.setState({kegList: newKegList});
   }
 
 
@@ -49,7 +69,7 @@ console.log('Hiiiii, guyyyyyy.');
         <div className="App-body">
           <strong onClick={this.handleKegFocusClick}>Click me to change my state!</strong>
           <Switch>
-            <Route exact path='/' component={KegList} />
+            <Route exact path='/' render={()=><KegList kegList={this.state.kegList} />} />
             <Route path='/newkeg' render={()=><NewKeg onKegNew={this.handleKegNew} />} />
             <Route path='/editkeg' component={EditKeg} />
             <Route component={Error404} />
