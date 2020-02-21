@@ -9,13 +9,13 @@ function Footer(){
 
   return (
     <div className="mainFooter">
-      <p className="mainFooterH1">FOOTER</p>
+      <p className="mainFooterH1">~</p>
 
 
-      <style jsx>{`
+      <style>{`
           .mainFooter {
             z-index: 0;
-            height: 5vh;
+            height: 2vh;
             background-color: rgba${imageArray[imageNumber]};
             border-top-left-radius:  25%;
             border-top-right-radius: 25%;

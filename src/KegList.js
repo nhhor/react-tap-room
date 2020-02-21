@@ -82,7 +82,7 @@ function KegList(){
             description={keg.description}
             key={index}/>
         )}
-        <style jsx>{`
+        <style>{`
           .kegListClass {
             background-color: rgba(166, 250, 118, .3);
             border-radius: 25px;

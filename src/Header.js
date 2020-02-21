@@ -12,7 +12,7 @@ function Header(){
       <p className="mainHeaderH1">React Tap Room</p>
       <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/NewKeg">Add Keg</Link> | <Link to="/EditKeg">Edit Keg</Link></p>
 
-      <style jsx>{`
+      <style>{`
           .mainHeader {
             height: 10vh;
             z-index: 99;

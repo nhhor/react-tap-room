@@ -40,7 +40,7 @@ function Keg(props){
 
       </ul>
 
-      <style jsx>{`
+      <style>{`
           .kegText {
             color: #800303;
             margin: 0px;

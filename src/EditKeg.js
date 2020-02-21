@@ -42,7 +42,7 @@ function EditKeg(){
     </form>
 
 
-    <style jsx>{`
+    <style>{`
       .newKegClass {
         position: relative;
         background-color: rgba(166, 250, 118, .1);

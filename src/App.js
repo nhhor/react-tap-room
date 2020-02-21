@@ -1,5 +1,7 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -9,7 +11,6 @@ import Error404 from './Error404';
 import NewKeg from './NewKeg';
 import EditKeg from './EditKeg';
 
-import { Switch, Route } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -18,8 +19,23 @@ class App extends React.Component {
     super(props);
     this.state = {
       kegList: [],
-      kegFocus: 'test'
+      kegFocus: 1
     };
+    this.handleKegFocusClick = this.handleKegFocusClick.bind(this);
+    this.handleKegNew = this.handleKegNew.bind(this);
+  }
+
+  handleKegNew(){
+console.log('Hiiiii, guyyyyyy.');
+  }
+
+
+
+  handleKegFocusClick(){
+    const currentKegFocus = this.state.kegFocus;
+    const newKegFocus = currentKegFocus + 1;
+    this.setState({kegFocus: newKegFocus})
+    console.log('kegFocus is currently set to:' + currentKegFocus);
   }
 
   render() {
@@ -31,20 +47,23 @@ class App extends React.Component {
         </div>
 
         <div className="App-body">
+          <strong onClick={this.handleKegFocusClick}>Click me to change my state!</strong>
           <Switch>
             <Route exact path='/' component={KegList} />
-            <Route path='/newkeg' component={NewKeg} />
+            <Route path='/newkeg' render={()=><NewKeg onKegNew={this.handleKegNew} />} />
             <Route path='/editkeg' component={EditKeg} />
             <Route component={Error404} />
           </Switch>
         </div>
 
 
+
+
         <div className="App-footer">
           <Footer/>
         </div>
 
-        <style jsx>{`
+        <style>{`
             .App-header {
               height: 10vh;
               display: flex;
@@ -61,9 +80,7 @@ class App extends React.Component {
               overflow-y: auto;
             }
 
-
             .App-footer {
-              height: 5vh;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -79,5 +96,10 @@ class App extends React.Component {
       );
     }
   }
+
+  App.propTypes = {
+    handleKegNew: PropTypes.func,
+    handleKegFocusClick: PropTypes.func
+  };
 
   export default App;
