@@ -5,6 +5,8 @@ import KegIcon from './KegIcon.svg';
 function Keg(props){
 
   let count = 1;
+  let stockPercent = parseInt(((props.stock/124)*100));
+  let kegButtonID = ('kegButton' + props.id);
 
   function handleClick(e) {
     e.preventDefault();
@@ -29,7 +31,7 @@ function Keg(props){
         <p className='divGrid5 kegAlcoholContent'>{props.alcoholContent}% abv</p>
         <p className='divGrid6 kegPrice'>${props.price}/pint</p>
         <p className='divGrid7 kegTappedOn'>Tapped {props.formattedWaitTime} ago.</p>
-        <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
+        <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell<br/><img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
 
 
       </div>
@@ -95,9 +97,12 @@ function Keg(props){
           }
 
           .kegSellButton {
-            color: teal;
-            background-color: rgba(11, 11, 11, .5);
+            color: black;
             border-radius: 25%;
+          }
+
+          #${kegButtonID} {
+            background: linear-gradient(0deg, rgba(0,255,0,.9) 0%, rgba(0,255,0,.9) ${stockPercent}%, rgba(255,0,0,.9) ${stockPercent}%, rgba(255,0,0,.9) 100%);
           }
 
           .kegBox {
@@ -136,7 +141,8 @@ Keg.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   stock: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  currentRouterPath: PropTypes.string
 };
 
 

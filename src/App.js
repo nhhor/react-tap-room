@@ -7,6 +7,7 @@ import './App.css';
 import Header from './Header';
 import Footer from './Footer';
 import KegList from './KegList';
+import Admin from './Admin';
 import Error404 from './Error404';
 
 import NewKeg from './NewKeg';
@@ -26,7 +27,7 @@ class App extends React.Component {
         id: 'abc0',
         name: 'Hefe',
         price: '3.99',
-        stock: 124,
+        stock: 120,
         tappedOn: new Moment().subtract(2, 'days'),
         type: 'German Hefeweizen'
       },
@@ -37,7 +38,7 @@ class App extends React.Component {
         id: 'abc1',
         name: 'Wit',
         price: '4.98',
-        stock: 119,
+        stock: 31,
         tappedOn: new Moment().subtract(2, 'weeks'),
         type: 'Belgian Wit Ale'
       },
@@ -48,7 +49,7 @@ class App extends React.Component {
         id: 'abc2',
         name: 'Beer',
         price: '3.00',
-        stock: 124,
+        stock: 62,
         tappedOn: new Moment().subtract(2, 'months'),
         type: 'American Lager'
       }],
@@ -106,7 +107,11 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' render={()=><KegList kegList={this.state.kegList} />} />
             <Route path='/newkeg' render={()=><NewKeg onKegNew={this.handleKegNew} />} />
+
+            <Route path='/admin' render={(props)=><Admin kegList={this.state.kegList} currentRouterPath={props.location.pathname} />} />
+
             <Route path='/editkeg' component={EditKeg} />
+
             <Route component={Error404} />
           </Switch>
         </div>
