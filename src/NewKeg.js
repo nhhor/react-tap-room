@@ -14,11 +14,8 @@ function NewKeg(props){
 
   function handleNewKegFormSubmission(event) {
     event.preventDefault();
-    console.log(_name.value);
-    console.log(_type.value);
-    console.log(_brand.value);
 
-    props.onKegNew({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: _alcoholContent.value, price: _price.value, stock: _stock.value, description: _description.value});
+    props.onKegNew({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value});
 
     _name = '';
     _type = '';
@@ -77,7 +74,8 @@ function NewKeg(props){
           <legend>Alcohol content:</legend>
           <input
             className='inputClass'
-            type="text"
+            type="number"
+            step="0.01"
             id="alcoholContent"
             name="alcoholContent"
             placeholder='Alcohol content (required)'
@@ -90,7 +88,8 @@ function NewKeg(props){
           <legend>$/pint:</legend>
           <input
             className='inputClass'
-            type="text"
+            type="number"
+            step="0.01"
             id="price"
             name="price"
             placeholder='Price per pint (required)'
@@ -103,7 +102,7 @@ function NewKeg(props){
           <legend>Stock (in pints):</legend>
           <input
             className='inputClass'
-            type="text"
+            type="number"
             id="stock"
             name="stock"
             placeholder='Stock (required)'
