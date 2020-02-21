@@ -12,61 +12,72 @@ import EditKeg from './EditKeg';
 import { Switch, Route } from 'react-router-dom';
 
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
 
-      <div className="App-header">
-        <Header/>
-      </div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      kegList: [],
+      kegFocus: 'test'
+    };
+  }
 
-      <div className="App-body">
-        <Switch>
-          <Route exact path='/' component={KegList} />
-          <Route path='/newkeg' component={NewKeg} />
-          <Route path='/editkeg' component={EditKeg} />
-          <Route component={Error404} />
-        </Switch>
-      </div>
+  render() {
+    return (
+      <div className="App">
 
+        <div className="App-header">
+          <Header/>
+        </div>
 
-      <div className="App-footer">
-        <Footer/>
-      </div>
-
-      <style jsx>{`
-          .App-header {
-            height: 10vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(8px + 2vmin);
-            margin: 0px;
-            color: white;
-          }
-
-          .App-body {
-            height: 85vh;
-            overflow-y: auto;
-          }
+        <div className="App-body">
+          <Switch>
+            <Route exact path='/' component={KegList} />
+            <Route path='/newkeg' component={NewKeg} />
+            <Route path='/editkeg' component={EditKeg} />
+            <Route component={Error404} />
+          </Switch>
+        </div>
 
 
-          .App-footer {
-            height: 5vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(8px + 1vmin);
-            margin: 0px;
-            color: white;
+        <div className="App-footer">
+          <Footer/>
+        </div>
 
-          }
-          `}</style>
+        <style jsx>{`
+            .App-header {
+              height: 10vh;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              font-size: calc(8px + 2vmin);
+              margin: 0px;
+              color: white;
+            }
 
-    </div>
-  );
-}
+            .App-body {
+              height: 85vh;
+              overflow-y: auto;
+            }
 
-export default App;
+
+            .App-footer {
+              height: 5vh;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              font-size: calc(8px + 1vmin);
+              margin: 0px;
+              color: white;
+
+            }
+            `}</style>
+
+        </div>
+      );
+    }
+  }
+
+  export default App;
