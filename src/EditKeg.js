@@ -6,43 +6,43 @@ function EditKeg(){
   return (
 
     <div className='newKegClass'>
-    <h1>Edit a keg</h1>
+      <h1>Edit a keg</h1>
 
-    <form>
-    <fieldset>
-    <legend>Edit Keg:</legend>
+      <form>
+        <fieldset>
+          <legend>Edit Keg:</legend>
 
-    <label for="KegID">Keg ID:</label><br/>
-    <input type="text" id="KegID" name="KegID"/><br/>
+          <label htmlFor="KegID">Keg ID:</label><br/>
+          <input type="text" id="KegID" name="KegID"/><br/>
 
-    <label for="name">Beer name:</label><br/>
-    <input type="text" id="name" name="name"/><br/>
+          <label htmlFor="name">Beer name:</label><br/>
+          <input type="text" id="name" name="name"/><br/>
 
-    <label for="type">Beer type:</label><br/>
-    <input type="text" id="type" name="type"/><br/>
+          <label htmlFor="type">Beer type:</label><br/>
+          <input type="text" id="type" name="type"/><br/>
 
-    <label for="brand">Beer brand:</label><br/>
-    <input type="text" id="brand" name="brand"/><br/>
+          <label htmlFor="brand">Beer brand:</label><br/>
+          <input type="text" id="brand" name="brand"/><br/>
 
-    <label for="alcoholContent">Alcohol content:</label><br/>
-    <input type="text" id="alcoholContent" name="alcoholContent"/><br/>
+          <label htmlFor="alcoholContent">Alcohol content:</label><br/>
+          <input type="text" id="alcoholContent" name="alcoholContent"/><br/>
 
-    <label for="price">Price per pint:</label><br/>
-    <input type="text" id="price" name="price"/><br/>
+          <label htmlFor="price">Price per pint:</label><br/>
+          <input type="text" id="price" name="price"/><br/>
 
-    <label for="stock">Stock in pints:</label><br/>
-    <input type="text" id="stock" name="stock"/><br/>
+          <label htmlFor="stock">Stock in pints:</label><br/>
+          <input type="text" id="stock" name="stock"/><br/>
 
-    <label for="description">Beer description:</label><br/>
-    <input type="text" id="description" name="description"/><br/><br/>
+          <label htmlFor="description">Beer description:</label><br/>
+          <input type="text" id="description" name="description"/><br/><br/>
 
-    <input type="submit" value="Submit"/>
+          <input type="submit" value="Submit"/>
 
-    </fieldset>
-    </form>
+        </fieldset>
+      </form>
 
 
-    <style>{`
+      <style>{`
       .newKegClass {
         position: relative;
         background-color: rgba(166, 250, 118, .1);
@@ -59,11 +59,11 @@ function EditKeg(){
 
 
 
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
 
 
 
-  export default EditKeg;
+export default EditKeg;

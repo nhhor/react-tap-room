@@ -8,8 +8,8 @@ function Keg(props){
 
   function handleClick(e) {
     e.preventDefault();
-    let kegTarget = e.currentTarget.id
-    let kegTargetId = kegTarget.slice(9)
+    let kegTarget = e.currentTarget.id;
+    let kegTargetId = kegTarget.slice(9);
 
     console.log('Click target was:', kegTargetId);
     console.log('Props stock is:', props.stock);
@@ -18,7 +18,7 @@ function Keg(props){
     count += 1;
 
     console.log('Math yeilds:', math);
-    document.getElementById("magic"+kegTargetId).innerHTML = math;
+    document.getElementById('magic'+kegTargetId).innerHTML = math;
 
   }
 
@@ -84,19 +84,20 @@ function Keg(props){
           }
 
           `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  Keg.propTypes = {
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    brand: PropTypes.string.isRequired,
-    alcoholContent: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    stock: PropTypes.number.isRequired
-  };
+Keg.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  alcoholContent: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  stock: PropTypes.number.isRequired
+};
 
 
-  export default Keg;
+export default Keg;

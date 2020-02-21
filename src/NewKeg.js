@@ -35,101 +35,101 @@ function NewKeg(props){
       <form onSubmit={handleNewKegFormSubmission}>
         <fieldset><legend>New Keg:</legend>
 
-        <fieldset className='fieldsetInput'>
-          <legend>Beer name:</legend>
-          <input
-            className='inputClass'
-            type="text"
-            id="name"
-            name="name"
-            placeholder='Beer name (required)'
-            required
-            ref={(input) => {_name = input;}}/>
+          <fieldset className='fieldsetInput'>
+            <legend>Beer name:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="name"
+              name="name"
+              placeholder='Beer name (required)'
+              required
+              ref={(input) => {_name = input;}}/>
+          </fieldset>
+
+          <fieldset className='fieldsetInput'>
+            <legend>Beer type:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="type"
+              name="type"
+              placeholder='Beer type (required)'
+              required
+              ref={(input) => {_type = input;}}/>
+          </fieldset>
+
+          <fieldset className='fieldsetInput'>
+            <legend>Beer brand:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="brand"
+              name="brand"
+              placeholder='Beer brand (required)'
+              required
+              ref={(input) => {_brand = input;}}/>
+          </fieldset>
+
+          <fieldset className='fieldsetInput'>
+            <legend>Alcohol content:</legend>
+            <input
+              className='inputClass'
+              type="number"
+              step="0.01"
+              id="alcoholContent"
+              name="alcoholContent"
+              placeholder='Alcohol content (required)'
+              required
+              ref={(input) => {_alcoholContent = input;}}/>
+          </fieldset>
+
+
+          <fieldset className='fieldsetInput'>
+            <legend>$/pint:</legend>
+            <input
+              className='inputClass'
+              type="number"
+              step="0.01"
+              id="price"
+              name="price"
+              placeholder='Price per pint (required)'
+              required
+              ref={(input) => {_price = input;}}/>
+          </fieldset>
+
+
+          <fieldset className='fieldsetInput'>
+            <legend>Stock (in pints):</legend>
+            <input
+              className='inputClass'
+              type="number"
+              id="stock"
+              name="stock"
+              placeholder='Stock (required)'
+              required
+              ref={(input) => {_stock = input;}}/>
+          </fieldset>
+
+
+          <fieldset className='fieldsetInput'>
+            <legend>Description:</legend>
+            <textarea
+              className='inputClass'
+              id="description"
+              name="description"
+              placeholder='Description'
+              ref={(input) => {_description = input;}}/>
+
+          </fieldset>
+
+          <button type='submit'>Submit!</button>
+
         </fieldset>
-
-        <fieldset className='fieldsetInput'>
-          <legend>Beer type:</legend>
-          <input
-            className='inputClass'
-            type="text"
-            id="type"
-            name="type"
-            placeholder='Beer type (required)'
-            required
-            ref={(input) => {_type = input;}}/>
-        </fieldset>
-
-        <fieldset className='fieldsetInput'>
-          <legend>Beer brand:</legend>
-          <input
-            className='inputClass'
-            type="text"
-            id="brand"
-            name="brand"
-            placeholder='Beer brand (required)'
-            required
-            ref={(input) => {_brand = input;}}/>
-        </fieldset>
-
-        <fieldset className='fieldsetInput'>
-          <legend>Alcohol content:</legend>
-          <input
-            className='inputClass'
-            type="number"
-            step="0.01"
-            id="alcoholContent"
-            name="alcoholContent"
-            placeholder='Alcohol content (required)'
-            required
-            ref={(input) => {_alcoholContent = input;}}/>
-        </fieldset>
+      </form>
 
 
-        <fieldset className='fieldsetInput'>
-          <legend>$/pint:</legend>
-          <input
-            className='inputClass'
-            type="number"
-            step="0.01"
-            id="price"
-            name="price"
-            placeholder='Price per pint (required)'
-            required
-            ref={(input) => {_price = input;}}/>
-        </fieldset>
-
-
-        <fieldset className='fieldsetInput'>
-          <legend>Stock (in pints):</legend>
-          <input
-            className='inputClass'
-            type="number"
-            id="stock"
-            name="stock"
-            placeholder='Stock (required)'
-            required
-            ref={(input) => {_stock = input;}}/>
-        </fieldset>
-
-
-        <fieldset className='fieldsetInput'>
-          <legend>Description:</legend>
-          <textarea
-            className='inputClass'
-            id="description"
-            name="description"
-            placeholder='Description'
-            ref={(input) => {_description = input;}}/>
-
-        </fieldset>
-
-        <button type='submit'>Submit!</button>
-
-      </fieldset>
-    </form>
-
-
-    <style>{`
+      <style>{`
         .newKegClass {
           position: relative;
           background-color: rgba(166, 250, 118, .1);
