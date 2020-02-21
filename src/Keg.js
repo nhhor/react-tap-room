@@ -14,7 +14,7 @@ function Keg(props){
     let kegTargetId = kegTarget.slice(9);
     let math = (props.stock - count);
     count += 1;
-    document.getElementById('magic'+kegTargetId).innerHTML = (math+ ' pints left');
+    document.getElementById('magic'+kegTargetId).innerHTML = (math);
   }
 
 
@@ -31,7 +31,7 @@ function Keg(props){
         <p className='divGrid5 kegAlcoholContent'>{props.alcoholContent}% abv</p>
         <p className='divGrid6 kegPrice'>${props.price}/pint</p>
         <p className='divGrid7 kegTappedOn'>Tapped {displayTimeOpen(props.tappedOn)} ago.</p>
-        <p className='divGrid8 kegStockSell' id={'magic' + props.id}>({props.stock} pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
+        <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell <img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
 
 
       </div>
@@ -125,25 +125,25 @@ function Keg(props){
           }
 
           `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  function displayTimeOpen(tappedOn) {
-    return tappedOn.from(new Moment(), true);
-  }
+function displayTimeOpen(tappedOn) {
+  return tappedOn.from(new Moment(), true);
+}
 
-  Keg.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    brand: PropTypes.string.isRequired,
-    alcoholContent: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    tappedOn: PropTypes.instanceOf(Moment).isRequired,
-    stock: PropTypes.number.isRequired
-  };
+Keg.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  alcoholContent: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  tappedOn: PropTypes.instanceOf(Moment).isRequired,
+  stock: PropTypes.number.isRequired
+};
 
 
-  export default Keg;
+export default Keg;

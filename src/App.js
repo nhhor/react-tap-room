@@ -23,29 +23,55 @@ class App extends React.Component {
       kegList: [{
         alcoholContent: '4.9',
         brand: 'Widmer Brothers',
-        description: 'It\'s ok.',
-        id: 0,
+        description: 'Little spicy, clove, faint banana, nice wheat twang, slightly floral, faint citrus, bready malt, and a little sweetness.',
+        id: 'abc0',
         name: 'Hefe',
         price: '3.99',
         stock: 124,
         tappedOn: new Moment().subtract(2, 'days'),
-        type: 'American-style hefeweizen'
+        type: 'German Hefeweizen'
       },
       {
         alcoholContent: '5.1',
         brand: 'Pfriem',
         description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
-        id: 1,
+        id: 'abc1',
         name: 'Wit',
-        price: '3.98',
+        price: '4.98',
         stock: 119,
-        tappedOn: new Moment().subtract(1, 'weeks'),
+        tappedOn: new Moment().subtract(2, 'weeks'),
         type: 'Belgian Wit Ale'
+      },
+      {
+        alcoholContent: '4.74',
+        brand: 'Pabst Blue Ribbon',
+        description: 'Its unique fermentation and maturation process results in a smooth, full bodied beer with a clean, crisp finish with a fine noble hop aroma.',
+        id: 'abc2',
+        name: 'Beer',
+        price: '3.00',
+        stock: 124,
+        tappedOn: new Moment().subtract(2, 'months'),
+        type: 'American Lager'
       }],
       kegFocus: 1
     };
     this.handleKegFocusClick = this.handleKegFocusClick.bind(this);
     this.handleKegNew = this.handleKegNew.bind(this);
+  }
+
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() =>
+      this.updateTicketElapsedWaitTime(),
+    5000);
+  }
+
+  updateTicketElapsedWaitTime() {
+    console.log('check');
+    let newkegList = this.state.kegList.slice();
+    newkegList.forEach((keg) =>
+      keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
+    );
+    this.setState({kegList: newkegList});
   }
 
   handleKegNew(newKeg){
@@ -89,33 +115,33 @@ class App extends React.Component {
         </div>
 
         <style>{`
-            .App-header {
-              height: 10vh;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-size: calc(8px + 2vmin);
-              margin: 0px;
-              color: white;
-            }
+          .App-header {
+            height: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(8px + 2vmin);
+            margin: 0px;
+            color: white;
+          }
 
-            .App-body {
-              height: 85vh;
-              overflow-y: auto;
-            }
+          .App-body {
+            height: 85vh;
+            overflow-y: auto;
+          }
 
-            .App-footer {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-size: calc(8px + 1vmin);
-              margin: 0px;
-              color: white;
+          .App-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(8px + 1vmin);
+            margin: 0px;
+            color: white;
 
-            }
-            `}</style>
+          }
+          `}</style>
 
       </div>
     );
