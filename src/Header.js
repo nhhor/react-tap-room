@@ -10,7 +10,7 @@ function Header(){
   return (
     <div className="mainHeader">
       <p className="mainHeaderH1">React Tap Room</p>
-      <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/NewKeg">Add Keg</Link> | <Link to="/EditKeg">Edit Keg</Link></p>
+      <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/NewKeg">Add Keg</Link> | <Link to="/Admin">Admin</Link></p>
 
       <style>{`
           .mainHeader {
