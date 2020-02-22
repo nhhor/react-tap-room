@@ -8,13 +8,9 @@ function Keg(props){
   let stockPercent = parseInt(((props.stock/124)*100));
   let kegButtonID = ('kegButton' + props.id);
 
-  function handleClick(e) {
-    e.preventDefault();
-    let kegTarget = e.currentTarget.id;
-    let kegTargetId = kegTarget.slice(9);
-    let math = (props.stock - count);
-    count += 1;
-    document.getElementById('magic'+kegTargetId).innerHTML = (math);
+  function sellAPint() {
+    console.log(props.id);
+    props.onSellPint(props.id)
   }
 
 
@@ -31,7 +27,7 @@ function Keg(props){
         <p className='divGrid5 kegAlcoholContent'>{props.alcoholContent}% abv</p>
         <p className='divGrid6 kegPrice'>${props.price}/pint</p>
         <p className='divGrid7 kegTappedOn'>Tapped {props.formattedWaitTime} ago.</p>
-        <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={handleClick}>Sell<br/><img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
+        <p className='divGrid8 kegStockSell'>(<span id={'magic' + props.id}>{props.stock}</span> pints left) <button id={'kegButton' + props.id} className='kegSellButton' onClick={sellAPint}>Sell<br/><img src={KegIcon} className="kegIcon" alt="kegIcon" /></button></p>
 
 
       </div>

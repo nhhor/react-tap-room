@@ -57,35 +57,23 @@ class App extends React.Component {
     };
     this.handleKegFocusClick = this.handleKegFocusClick.bind(this);
     this.handleKegNew = this.handleKegNew.bind(this);
+    this.handleSellPint = this.handleSellPint.bind(this);
   }
 
-  componentDidMount() {
-    this.waitTimeUpdateTimer = setInterval(() =>
-      this.updateTicketElapsedWaitTime(),
-    5000);
-  }
-
-  updateTicketElapsedWaitTime() {
-    console.log('check');
-    let newkegList = this.state.kegList.slice();
-    newkegList.forEach((keg) =>
-      keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
-    );
-    this.setState({kegList: newkegList});
-  }
-
-  componentWillUnmount(){
-    clearInterval(this.waitTimeUpdateTimer);
+  handleSellPint(id){
+    console.log('start');
+    const newKegList = this.state.kegList.slice();
+    const thisKeg = newKegList.find(e => e.id === id)
+    thisKeg.stock -= 1;
+    this.setState({kegList: newKegList});
   }
 
   handleKegNew(newKeg){
-    var newKegList = this.state.kegList.slice();
+    const newKegList = this.state.kegList.slice();
     newKeg.formattedWaitTime = (newKeg.tappedOn).fromNow(true);
     newKegList.push(newKeg);
     this.setState({kegList: newKegList});
   }
-
-
 
   handleKegFocusClick(){
     const currentKegFocus = this.state.kegFocus;
@@ -94,72 +82,97 @@ class App extends React.Component {
     console.log('kegFocus is currently set to:' + currentKegFocus);
   }
 
-  render() {
-    return (
-      <div className="App">
-
-        <div className="App-header">
-          <Header/>
-        </div>
-
-        <div className="App-body">
-          <strong onClick={this.handleKegFocusClick}>Click me to change my state!</strong>
-          <Switch>
-            <Route exact path='/' render={()=><KegList kegList={this.state.kegList} />} />
-            <Route path='/newkeg' render={()=><NewKeg onKegNew={this.handleKegNew} />} />
-
-            <Route path='/admin' render={(props)=><Admin kegList={this.state.kegList} currentRouterPath={props.location.pathname} />} />
-
-            <Route path='/editkeg' component={EditKeg} />
-
-            <Route component={Error404} />
-          </Switch>
-        </div>
-
-
-
-
-        <div className="App-footer">
-          <Footer/>
-        </div>
-
-        <style>{`
-          .App-header {
-            height: 10vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(8px + 2vmin);
-            margin: 0px;
-            color: white;
-          }
-
-          .App-body {
-            height: 85vh;
-            overflow-y: auto;
-          }
-
-          .App-footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(8px + 1vmin);
-            margin: 0px;
-            color: white;
-
-          }
-          `}</style>
-
-      </div>
-    );
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() =>
+    this.updateTicketElapsedWaitTime(),
+    5000);
   }
+
+  updateTicketElapsedWaitTime() {
+    console.log('check');
+    let newkegList = this.state.kegList.slice();
+    newkegList.forEach((keg) =>
+    keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
+  );
+  this.setState({kegList: newkegList});
 }
 
-App.propTypes = {
-  handleKegNew: PropTypes.func,
-  handleKegFocusClick: PropTypes.func
-};
+componentWillUnmount(){
+  clearInterval(this.waitTimeUpdateTimer);
+}
 
-export default App;
+render() {
+  return (
+    <div className="App">
+
+      <div className="App-header">
+        <Header/>
+      </div>
+
+      <div className="App-body">
+        <strong onClick={this.handleKegFocusClick}>Click me to change my state!</strong>
+        <Switch>
+          <Route exact path='/' render={()=><KegList
+              kegList={this.state.kegList} />} />
+            <Route path='/newkeg' render={()=><NewKeg
+                onKegNew={this.handleKegNew} />} />
+
+              <Route path='/admin' render={(props)=><Admin
+                  kegList={this.state.kegList}
+                  currentRouterPath={props.location.pathname}
+                  onSellPint={this.handleSellPint} />} />
+
+                <Route path='/editkeg' component={EditKeg} />
+
+                <Route component={Error404} />
+              </Switch>
+            </div>
+
+
+
+
+            <div className="App-footer">
+              <Footer/>
+            </div>
+
+            <style>{`
+                .App-header {
+                  height: 10vh;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: calc(8px + 2vmin);
+                  margin: 0px;
+                  color: white;
+                }
+
+                .App-body {
+                  height: 85vh;
+                  overflow-y: auto;
+                }
+
+                .App-footer {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: calc(8px + 1vmin);
+                  margin: 0px;
+                  color: white;
+
+                }
+                `}</style>
+
+            </div>
+          );
+        }
+      }
+
+      App.propTypes = {
+        handleKegNew: PropTypes.func,
+        handleSellPint: PropTypes.func,
+        handleKegFocusClick: PropTypes.func
+      };
+
+      export default App;
