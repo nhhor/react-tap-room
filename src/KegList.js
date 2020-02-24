@@ -17,6 +17,7 @@ function KegList(props){
             formattedWaitTime={keg.formattedWaitTime}
             description={keg.description}
             id={keg.id}
+            onKegEdit={props.onKegEdit}
             onSellPint={props.onSellPint}
             onNewKegSelected={props.onNewKegSelected}
             currentRouterPath={props.currentRouterPath}
@@ -49,6 +50,7 @@ function KegList(props){
 KegList.propTypes = {
   kegList: PropTypes.array,
   onSellPint: PropTypes.func,
+  onKegEdit: PropTypes.func,
   onNewKegSelected: PropTypes.func,
   currentRouterPath: PropTypes.string
 };

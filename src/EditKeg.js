@@ -7,17 +7,25 @@ import './App.css';
 function EditKeg(props){
 
   let _name = null;
+  let _id = null;
   let _type = null;
   let _brand = null;
   let _alcoholContent = null;
   let _price = null;
   let _stock = null;
+  let _formattedWaitTime = null;
   let _description = null;
+
 
   function handleEditKegFormSubmission(event) {
     event.preventDefault();
 
-    props.onKegEdit({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value, id: v4(), tappedOn: new Moment()});
+    let _inputTime = _formattedWaitTime.value.split(' ')
+    let _newTime = `${_inputTime[0]}, '${_inputTime[1]}'`
+    // console.log(_inputTime);
+    console.log(_newTime);
+    props.onKegEdit({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value, id: _id.value, tappedOn: new Moment().subtract(99, 'days')});
+
 
     _name = '';
     _type = '';
@@ -31,10 +39,18 @@ function EditKeg(props){
   return (
 
     <div className='editKegClass'>
-      <h1>Edit this Keg</h1>
+      <h1>Edit Keg:</h1>
 
       <form onSubmit={handleEditKegFormSubmission}>
-        <fieldset><legend>Edit Keg:</legend>
+        <fieldset><legend>Edit this Keg of <em>{props.kegFocus.brand} {props.kegFocus.name}</em>:</legend>
+
+          <input
+            type="hidden"
+            id="id"
+            name="id"
+            defaultValue={props.kegFocus.id}
+            required
+            ref={(input) => {_id = input;}}/>
 
           <fieldset className='fieldsetInput'>
             <legend>Beer name:</legend>
@@ -43,7 +59,7 @@ function EditKeg(props){
               type="text"
               id="name"
               name="name"
-              placeholder='Beer name (required)'
+              defaultValue={props.kegFocus.name}
               required
               ref={(input) => {_name = input;}}/>
           </fieldset>
@@ -55,7 +71,7 @@ function EditKeg(props){
               type="text"
               id="type"
               name="type"
-              placeholder='Beer type (required)'
+              defaultValue={props.kegFocus.type}
               required
               ref={(input) => {_type = input;}}/>
           </fieldset>
@@ -67,7 +83,7 @@ function EditKeg(props){
               type="text"
               id="brand"
               name="brand"
-              placeholder='Beer brand (required)'
+              defaultValue={props.kegFocus.brand}
               required
               ref={(input) => {_brand = input;}}/>
           </fieldset>
@@ -80,7 +96,7 @@ function EditKeg(props){
               step="0.01"
               id="alcoholContent"
               name="alcoholContent"
-              placeholder='Alcohol content (required)'
+              defaultValue={props.kegFocus.alcoholContent}
               required
               ref={(input) => {_alcoholContent = input;}}/>
           </fieldset>
@@ -94,7 +110,7 @@ function EditKeg(props){
               step="0.01"
               id="price"
               name="price"
-              placeholder='Price per pint (required)'
+              defaultValue={props.kegFocus.price}
               required
               ref={(input) => {_price = input;}}/>
           </fieldset>
@@ -107,9 +123,21 @@ function EditKeg(props){
               type="number"
               id="stock"
               name="stock"
-              placeholder='Stock (required)'
+              defaultValue={props.kegFocus.stock}
               required
               ref={(input) => {_stock = input;}}/>
+          </fieldset>
+
+          <fieldset className='fieldsetInput'>
+            <legend>Tapped how long ago:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="formattedWaitTime"
+              name="formattedWaitTime"
+              defaultValue={props.kegFocus.formattedWaitTime}
+              required
+              ref={(input) => {_formattedWaitTime = input;}}/>
           </fieldset>
 
 
@@ -119,7 +147,7 @@ function EditKeg(props){
               className='inputClass'
               id="description"
               name="description"
-              placeholder='Description'
+              defaultValue={props.kegFocus.description}
               ref={(input) => {_description = input;}}/>
 
           </fieldset>

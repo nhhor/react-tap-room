@@ -57,6 +57,7 @@ class App extends React.Component {
     };
     this.handleNewKegSelected = this.handleNewKegSelected.bind(this);
     this.handleKegNew = this.handleKegNew.bind(this);
+    this.handleKegEdit = this.handleKegEdit.bind(this);
     this.handleSellPint = this.handleSellPint.bind(this);
   }
 
@@ -69,6 +70,21 @@ class App extends React.Component {
       thisKeg.stock -= 1;
       this.setState({kegList: newKegList});
     }
+  }
+
+  handleKegEdit(keg){
+    const newKegList = this.state.kegList.slice();
+    const thisKeg = newKegList.find(e => e.id === keg.id)
+    thisKeg.name = keg.name
+    thisKeg.type = keg.type
+    thisKeg.brand = keg.brand
+    thisKeg.alcoholContent = keg.alcoholContent
+    thisKeg.price = keg.price
+    thisKeg.stock = keg.stock
+    thisKeg.description = keg.description
+    thisKeg.formattedWaitTime = (keg.tappedOn).fromNow(true);
+    thisKeg.tappedOn = keg.tappedOn
+    this.setState({kegList: newKegList});
   }
 
   handleKegNew(newKeg){
@@ -86,7 +102,7 @@ class App extends React.Component {
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
     this.updateKegTappedTime(),
-    5000);
+    1000);
   }
 
   updateKegTappedTime() {
@@ -120,6 +136,8 @@ render() {
                   kegList={this.state.kegList}
                   currentRouterPath={props.location.pathname}
                   onNewKegSelected={this.handleNewKegSelected}
+                  onKegEdit={this.handleKegEdit}
+                  kegFocus={this.state.kegFocus}
                   onSellPint={this.handleSellPint} />} />
 
                 <Route path='/editkeg' component={EditKeg} />
@@ -172,6 +190,8 @@ render() {
       App.propTypes = {
         handleKegNew: PropTypes.func,
         handleSellPint: PropTypes.func,
+        handleKegEdit: PropTypes.func,
+        kegFocus: PropTypes.object,
         handleNewKegSelected: PropTypes.func
       };
 
