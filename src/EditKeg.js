@@ -1,69 +1,165 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
+import Moment from 'moment';
 import './App.css';
 
-function EditKeg(){
+function EditKeg(props){
+
+  let _name = null;
+  let _type = null;
+  let _brand = null;
+  let _alcoholContent = null;
+  let _price = null;
+  let _stock = null;
+  let _description = null;
+
+  function handleEditKegFormSubmission(event) {
+    event.preventDefault();
+
+    props.onKegEdit({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value, id: v4(), tappedOn: new Moment()});
+
+    _name = '';
+    _type = '';
+    _brand = '';
+    _alcoholContent = '';
+    _price = '';
+    _stock = '';
+    _description = '';
+  }
 
   return (
 
-    <div className='newKegClass'>
-      <h1>Edit a keg</h1>
+    <div className='editKegClass'>
+      <h1>Edit this Keg</h1>
 
-      <form>
-        <fieldset>
-          <legend>Edit Keg:</legend>
+      <form onSubmit={handleEditKegFormSubmission}>
+        <fieldset><legend>Edit Keg:</legend>
 
-          <label htmlFor="KegID">Keg ID:</label><br/>
-          <input type="text" id="KegID" name="KegID"/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>Beer name:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="name"
+              name="name"
+              placeholder='Beer name (required)'
+              required
+              ref={(input) => {_name = input;}}/>
+          </fieldset>
 
-          <label htmlFor="name">Beer name:</label><br/>
-          <input type="text" id="name" name="name"/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>Beer type:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="type"
+              name="type"
+              placeholder='Beer type (required)'
+              required
+              ref={(input) => {_type = input;}}/>
+          </fieldset>
 
-          <label htmlFor="type">Beer type:</label><br/>
-          <input type="text" id="type" name="type"/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>Beer brand:</legend>
+            <input
+              className='inputClass'
+              type="text"
+              id="brand"
+              name="brand"
+              placeholder='Beer brand (required)'
+              required
+              ref={(input) => {_brand = input;}}/>
+          </fieldset>
 
-          <label htmlFor="brand">Beer brand:</label><br/>
-          <input type="text" id="brand" name="brand"/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>Alcohol content:</legend>
+            <input
+              className='inputClass'
+              type="number"
+              step="0.01"
+              id="alcoholContent"
+              name="alcoholContent"
+              placeholder='Alcohol content (required)'
+              required
+              ref={(input) => {_alcoholContent = input;}}/>
+          </fieldset>
 
-          <label htmlFor="alcoholContent">Alcohol content:</label><br/>
-          <input type="text" id="alcoholContent" name="alcoholContent"/><br/>
 
-          <label htmlFor="price">Price per pint:</label><br/>
-          <input type="text" id="price" name="price"/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>$/pint:</legend>
+            <input
+              className='inputClass'
+              type="number"
+              step="0.01"
+              id="price"
+              name="price"
+              placeholder='Price per pint (required)'
+              required
+              ref={(input) => {_price = input;}}/>
+          </fieldset>
 
-          <label htmlFor="stock">Stock in pints:</label><br/>
-          <input type="text" id="stock" name="stock"/><br/>
 
-          <label htmlFor="description">Beer description:</label><br/>
-          <input type="text" id="description" name="description"/><br/><br/>
+          <fieldset className='fieldsetInput'>
+            <legend>Stock (in pints):</legend>
+            <input
+              className='inputClass'
+              type="number"
+              id="stock"
+              name="stock"
+              placeholder='Stock (required)'
+              required
+              ref={(input) => {_stock = input;}}/>
+          </fieldset>
 
-          <input type="submit" value="Submit"/>
+
+          <fieldset className='fieldsetInput'>
+            <legend>Description:</legend>
+            <textarea
+              className='inputClass'
+              id="description"
+              name="description"
+              placeholder='Description'
+              ref={(input) => {_description = input;}}/>
+
+          </fieldset>
+
+          <button type='submit'>Submit!</button>
 
         </fieldset>
       </form>
 
 
       <style>{`
-      .newKegClass {
-        position: relative;
-        background-color: rgba(166, 250, 118, .1);
-        padding: 10px;
-        margin-left: 10%;
-        margin-right: 10%;
-        max-width: 80%;
-      }
+        .editKegClass {
+          position: relative;
+          background-color: rgba(166, 250, 118, .1);
+          padding: 10px;
+          margin-left: 10%;
+          margin-right: 10%;
+          max-width: 80%;
+          text-align: left;
 
+        }
 
-      `}</style>
+        .fieldsetInput {
+          margin-left: 6%;
+          margin-right: 3%;
+        }
 
-
-
-
-
+        .inputClass {
+          width: 90%;
+          margin-left: 6%;
+          margin-right: 3%;
+        }
+        `}</style>
     </div>
   );
 }
 
-
+EditKeg.propTypes = {
+  onKegEdit: PropTypes.func
+};
 
 
 export default EditKeg;

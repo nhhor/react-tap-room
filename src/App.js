@@ -7,7 +7,7 @@ import './App.css';
 import Header from './Header';
 import Footer from './Footer';
 import KegList from './KegList';
-import Admin from './Admin';
+import Employee from './Employee';
 import Error404 from './Error404';
 
 import NewKeg from './NewKeg';
@@ -53,19 +53,22 @@ class App extends React.Component {
         tappedOn: new Moment().subtract(2, 'months'),
         type: 'American Lager'
       }],
-      kegFocus: 1
+      kegFocus: null
     };
-    this.handleKegFocusClick = this.handleKegFocusClick.bind(this);
+    this.handleNewKegSelected = this.handleNewKegSelected.bind(this);
     this.handleKegNew = this.handleKegNew.bind(this);
     this.handleSellPint = this.handleSellPint.bind(this);
   }
 
   handleSellPint(id){
-    console.log('start');
     const newKegList = this.state.kegList.slice();
     const thisKeg = newKegList.find(e => e.id === id)
-    thisKeg.stock -= 1;
-    this.setState({kegList: newKegList});
+    if (thisKeg.stock < 1 ) {
+      alert('😔   All out!')
+    } else {
+      thisKeg.stock -= 1;
+      this.setState({kegList: newKegList});
+    }
   }
 
   handleKegNew(newKeg){
@@ -75,21 +78,18 @@ class App extends React.Component {
     this.setState({kegList: newKegList});
   }
 
-  handleKegFocusClick(){
-    const currentKegFocus = this.state.kegFocus;
-    const newKegFocus = currentKegFocus + 1;
-    this.setState({kegFocus: newKegFocus});
-    console.log('kegFocus is currently set to:' + currentKegFocus);
+  handleNewKegSelected(keg){
+    this.setState({kegFocus: keg});
+    console.log(this.state.kegFocus);
   }
 
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
-    this.updateTicketElapsedWaitTime(),
+    this.updateKegTappedTime(),
     5000);
   }
 
-  updateTicketElapsedWaitTime() {
-    console.log('check');
+  updateKegTappedTime() {
     let newkegList = this.state.kegList.slice();
     newkegList.forEach((keg) =>
     keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
@@ -110,16 +110,16 @@ render() {
       </div>
 
       <div className="App-body">
-        <strong onClick={this.handleKegFocusClick}>Click me to change my state!</strong>
         <Switch>
           <Route exact path='/' render={()=><KegList
               kegList={this.state.kegList} />} />
             <Route path='/newkeg' render={()=><NewKeg
                 onKegNew={this.handleKegNew} />} />
 
-              <Route path='/admin' render={(props)=><Admin
+              <Route path='/Employee' render={(props)=><Employee
                   kegList={this.state.kegList}
                   currentRouterPath={props.location.pathname}
+                  onNewKegSelected={this.handleNewKegSelected}
                   onSellPint={this.handleSellPint} />} />
 
                 <Route path='/editkeg' component={EditKeg} />
@@ -172,7 +172,7 @@ render() {
       App.propTypes = {
         handleKegNew: PropTypes.func,
         handleSellPint: PropTypes.func,
-        handleKegFocusClick: PropTypes.func
+        handleNewKegSelected: PropTypes.func
       };
 
       export default App;

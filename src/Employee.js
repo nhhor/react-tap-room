@@ -1,24 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import KegList from './KegList';
+import EditKeg from './EditKeg';
 
-function Admin(props){
+function Employee(props){
   return (
     <div>
-      <h2>Admin</h2>
+      <h2>Employee section:</h2>
+
+      <EditKeg />
+
       <KegList
         kegList={props.kegList}
         onSellPint={props.onSellPint}
+        onNewKegSelected={props.onNewKegSelected}
         currentRouterPath={props.currentRouterPath} />
     </div>
   );
 }
 
-Admin.propTypes = {
+Employee.propTypes = {
   kegList: PropTypes.array,
   onSellPint: PropTypes.func,
   onKegNew: PropTypes.func,
+  onNewKegSelected: PropTypes.func,
   currentRouterPath: PropTypes.string.isRequired
 };
 
-export default Admin;
+export default Employee;
