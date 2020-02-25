@@ -10,7 +10,7 @@ function Header(){
   return (
     <div className="mainHeader">
       <p className="mainHeaderH1">React Tap Room</p>
-      <p className="mainHeaderH3"><Link to="/">Keg List</Link> | <Link to="/NewKeg">Add Keg</Link> | <Link to="/Employee">Employee</Link></p>
+      <p className="mainHeaderH3"><Link to="/">Patrons</Link> | <Link to="/Employee">Employees</Link></p>
 
       <style>{`
           .mainHeader {
@@ -23,7 +23,7 @@ function Header(){
             top: 0px;
             width: 98%;
             margin: 0px;
-            animation: header_fade_effect 4s 1;
+            animation: header_fade_effect 3s 1;
           }
 
           .mainHeaderH1, .mainHeaderH3 {

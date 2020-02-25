@@ -5,19 +5,16 @@ import EditKeg from './EditKeg';
 
 function Employee(props){
 
-  let optionalSelectedTicketContent = null;
+  let editKegToggle = null;
   if (props.kegFocus != null){
-    optionalSelectedTicketContent =  <EditKeg
+    editKegToggle =  <EditKeg
       onKegEdit={props.onKegEdit}
       kegFocus={props.kegFocus}/>;
   }
 
   return (
     <div>
-      <h2>Employee section:</h2>
-
-      {optionalSelectedTicketContent}
-
+      {editKegToggle}
       <KegList
         kegList={props.kegList}
         onSellPint={props.onSellPint}
@@ -37,7 +34,8 @@ Employee.propTypes = {
 };
 
 Employee.propTypes = {
-  kegFocus: PropTypes.object
+  kegFocus: PropTypes.object,
+  onKegEdit: PropTypes.func
 };
 
 export default Employee;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { v4 } from 'uuid';
 import Moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import './App.css';
@@ -20,10 +19,8 @@ function EditKeg(props){
   function handleEditKegFormSubmission(event) {
     event.preventDefault();
 
-    let _inputTime = _formattedWaitTime.value.split(' ')
+    let _inputTime = _formattedWaitTime.value.split(' ');
     let _newTime = parseInt(_inputTime[0]);
-    let _newSpan = "'" + _inputTime[1] + "'";
-    console.log(_newSpan);
     props.onKegEdit({name: _name.value, type: _type.value, brand: _brand.value, alcoholContent: parseFloat(_alcoholContent.value).toFixed(2), price: parseFloat(_price.value).toFixed(2), stock: parseInt(_stock.value), description: _description.value, id: _id.value, tappedOn: new Moment().subtract(_newTime, 'days')});
 
     _name = '';
@@ -35,7 +32,6 @@ function EditKeg(props){
     _description = '';
 
     props.history.push('/');
-
   }
 
   return (
@@ -196,7 +192,9 @@ function EditKeg(props){
 }
 
 EditKeg.propTypes = {
-  onKegEdit: PropTypes.func
+  onKegEdit: PropTypes.func,
+  kegFocus: PropTypes.func,
+  history: PropTypes.func
 };
 
 

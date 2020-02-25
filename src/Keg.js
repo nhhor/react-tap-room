@@ -17,6 +17,7 @@ function Keg(props){
           <p className='divGrid8 kegStockLeft'>({props.stock}<br/>pints left)</p>
           <button id={'kegButton' + props.id} className='divGrid9 kegSellButton' onClick={sellAPint}>Sell
             <br/>
+            <br/>
             <img src={KegIcon} className="kegIcon" alt="kegIcon" />
           </button>
         </div>
@@ -32,15 +33,13 @@ function Keg(props){
         </div>
       );
     }
-  };
+  }
 
-  let count = 1;
   let stockPercent = parseInt(((props.stock/124)*100));
   let kegButtonID = ('kegButton' + props.id);
 
   function sellAPint() {
-    console.log('The KegID is:', props.id);
-    props.onSellPint(props.id)
+    props.onSellPint(props.id);
   }
 
   return (
@@ -88,6 +87,10 @@ function Keg(props){
             font-weight: bolder;
             background-color: rgba(1, 1, 1, .1);
             border-radius: 25%;
+            height: 22px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 66%;
           }
 
           .kegType {
@@ -128,6 +131,7 @@ function Keg(props){
             right: 10px;
             color: black;
             height: 45px;
+            width: 35px;
             border-radius: 25%;
           }
 
@@ -137,56 +141,61 @@ function Keg(props){
 
           .kegBox {
             position: relative;
-            background-color: rgba(166, 250, 118, .1);
+            background-color: rgba(0, 0, 64, .66);
             padding: 10px;
             margin: 10px;
             flex-grow: 1;
-            flex-basis: 320px;
+            flex-basis: 400px;
             max-width: 500px;
+            border-radius: 5%;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, .66);
           }
 
-
-
           .infoIcon {
-            // float: left;
             position: absolute;
             top: 15px;
             right: 10px;
-
             width: 30px;
-            animation: kegIconSpin infinite 5s linear;
+            animation: infoIconSpin infinite 3s linear;
           }
 
           .kegIcon {
-            // float: left;
-
+            position: absolute;
+            bottom: -3px;
+            right: 4px;
             width: 25px;
             animation: kegIconSpin infinite 5s linear;
           }
 
-          @idframes kegIconSpin {
-            from {transform: rotate(0deg);}
-            to {transform: rotate(360deg);}
+          @keyframes kegIconSpin {
+            from {transform: rotateX(0deg);}
+            to {transform: rotateX(360deg);}
+          }
+
+          @keyframes infoIconSpin {
+            from {transform: rotateZ(0deg);}
+            to {transform: rotateZ(360deg);}
           }
 
           `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
-  Keg.propTypes = {
-    alcoholContent: PropTypes.string.isRequired,
-    brand: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    formattedWaitTime: PropTypes.string, //removed 'isRequired' here only for pre-seeded data to not throw an error.
-    name: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    stock: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    onNewKegSelected: PropTypes.func,
-    currentRouterPath: PropTypes.string
-  };
+Keg.propTypes = {
+  alcoholContent: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  formattedWaitTime: PropTypes.string, //removed 'isRequired' here only for pre-seeded data to not throw an error.
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  stock: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  onNewKegSelected: PropTypes.func,
+  onSellPint: PropTypes.func,
+  currentRouterPath: PropTypes.string
+};
 
 
-  export default Keg;
+export default Keg;

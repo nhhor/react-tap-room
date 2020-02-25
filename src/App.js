@@ -5,7 +5,6 @@ import Moment from 'moment';
 import './App.css';
 
 import Header from './Header';
-import Footer from './Footer';
 import KegList from './KegList';
 import Employee from './Employee';
 import Error404 from './Error404';
@@ -43,10 +42,54 @@ class App extends React.Component {
         type: 'Belgian Wit Ale'
       },
       {
+        alcoholContent: '5.1',
+        brand: 'Pfriem',
+        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
+        id: 'abc2',
+        name: 'Wit',
+        price: '4.98',
+        stock: 31,
+        tappedOn: new Moment().subtract(2, 'weeks'),
+        type: 'Belgian Wit Ale'
+      },
+      {
+        alcoholContent: '5.1',
+        brand: 'Pfriem',
+        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
+        id: 'abc3',
+        name: 'Wit',
+        price: '4.98',
+        stock: 31,
+        tappedOn: new Moment().subtract(2, 'weeks'),
+        type: 'Belgian Wit Ale'
+      },
+      {
+        alcoholContent: '5.1',
+        brand: 'Pfriem',
+        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
+        id: 'abc4',
+        name: 'Wit',
+        price: '4.98',
+        stock: 31,
+        tappedOn: new Moment().subtract(2, 'weeks'),
+        type: 'Belgian Wit Ale'
+      },
+      {
+        alcoholContent: '5.1',
+        brand: 'Pfriem',
+        description: 'Sweet aromas of orange and spice, light-creamy flavor and a refreshing finish.',
+        id: 'abc5',
+        name: 'Wit',
+        price: '4.98',
+        stock: 31,
+        tappedOn: new Moment().subtract(2, 'weeks'),
+        type: 'Belgian Wit Ale'
+      },
+      {
         alcoholContent: '4.74',
         brand: 'Pabst Blue Ribbon',
         description: 'Its unique fermentation and maturation process results in a smooth, full bodied beer with a clean, crisp finish with a fine noble hop aroma.',
-        id: 'abc2',
+        id: 'abc6',
         name: 'Beer',
         price: '3.00',
         stock: 62,
@@ -63,9 +106,9 @@ class App extends React.Component {
 
   handleSellPint(id){
     const newKegList = this.state.kegList.slice();
-    const thisKeg = newKegList.find(e => e.id === id)
+    const thisKeg = newKegList.find(e => e.id === id);
     if (thisKeg.stock < 1 ) {
-      alert('😔   All out!')
+      alert('😔   All out!');
     } else {
       thisKeg.stock -= 1;
       this.setState({kegList: newKegList});
@@ -73,17 +116,17 @@ class App extends React.Component {
   }
 
   handleKegEdit(keg){
-    this.setState({kegFocus: null})
+    this.setState({kegFocus: null});
     const newKegList = this.state.kegList.slice();
-    const thisKeg = newKegList.find(e => e.id === keg.id)
-    thisKeg.name = keg.name
-    thisKeg.type = keg.type
-    thisKeg.brand = keg.brand
-    thisKeg.alcoholContent = keg.alcoholContent
-    thisKeg.price = keg.price
-    thisKeg.stock = keg.stock
-    thisKeg.description = keg.description
-    thisKeg.tappedOn = keg.tappedOn
+    const thisKeg = newKegList.find(e => e.id === keg.id);
+    thisKeg.name = keg.name;
+    thisKeg.type = keg.type;
+    thisKeg.brand = keg.brand;
+    thisKeg.alcoholContent = keg.alcoholContent;
+    thisKeg.price = keg.price;
+    thisKeg.stock = keg.stock;
+    thisKeg.description = keg.description;
+    thisKeg.tappedOn = keg.tappedOn;
     this.setState({kegList: newKegList});
   }
 
@@ -100,68 +143,57 @@ class App extends React.Component {
 
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
-    this.updateKegTappedTime(),
+      this.updateKegTappedTime(),
     1000);
   }
-
-  componentDidUpdate() {
-    //troublshooting editKeg input defaultValuse, converted to names functions so not called.
-    function test() {setTimeout(() => {
-      this.setState({kegFocus: null})
-      console.log(this.state.kegFocus)
-    }, 6000);
-  }
-}
 
   updateKegTappedTime() {
     let newkegList = this.state.kegList.slice();
     newkegList.forEach((keg) =>
-    keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
-  );
-  this.setState({kegList: newkegList});
-}
+      keg.formattedWaitTime = (keg.tappedOn).fromNow(true)
+    );
+    this.setState({kegList: newkegList});
+  }
 
-componentWillUnmount(){
-  clearInterval(this.waitTimeUpdateTimer);
-}
+  componentWillUnmount(){
+    clearInterval(this.waitTimeUpdateTimer);
+  }
 
-render() {
-  return (
-    <div className="App">
+  render() {
+    return (
+      <div className="App">
 
-      <div className="App-header">
-        <Header/>
-      </div>
+        <div className="App-header">
+          <Header/>
+        </div>
 
-      <div className="App-body">
-        <Switch>
-          <Route exact path='/' render={()=><KegList
+        <div className="App-body">
+          <Switch>
+            <Route exact path='/' render={()=><KegList
               kegList={this.state.kegList} />} />
             <Route path='/newkeg' render={()=><NewKeg
-                onKegNew={this.handleKegNew} />} />
+              onKegNew={this.handleKegNew} />} />
 
-              <Route path='/Employee' render={(props)=><Employee
-                  kegList={this.state.kegList}
-                  currentRouterPath={props.location.pathname}
-                  onNewKegSelected={this.handleNewKegSelected}
-                  onKegEdit={this.handleKegEdit}
-                  kegFocus={this.state.kegFocus}
-                  onSellPint={this.handleSellPint} />} />
+            <Route path='/Employee' render={(props)=><Employee
+              kegList={this.state.kegList}
+              currentRouterPath={props.location.pathname}
+              onNewKegSelected={this.handleNewKegSelected}
+              onKegEdit={this.handleKegEdit}
+              kegFocus={this.state.kegFocus}
+              onSellPint={this.handleSellPint} />} />
 
-                <Route path='/editkeg' component={EditKeg} />
+            <Route path='/editkeg' component={EditKeg} />
 
-                <Route component={Error404} />
-              </Switch>
-            </div>
-
-
+            <Route component={Error404} />
+          </Switch>
+        </div>
 
 
-            <div className="App-footer">
-              <Footer/>
-            </div>
 
-            <style>{`
+
+
+
+        <style>{`
                 .App-header {
                   height: 10vh;
                   display: flex;
@@ -174,33 +206,22 @@ render() {
                 }
 
                 .App-body {
-                  height: 85vh;
+                  height: 90vh;
                   overflow-y: auto;
-                }
-
-                .App-footer {
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: calc(8px + 1vmin);
-                  margin: 0px;
-                  color: white;
-
                 }
                 `}</style>
 
-            </div>
-          );
-        }
-      }
+      </div>
+    );
+  }
+}
 
-      App.propTypes = {
-        handleKegNew: PropTypes.func,
-        handleSellPint: PropTypes.func,
-        handleKegEdit: PropTypes.func,
-        kegFocus: PropTypes.object,
-        handleNewKegSelected: PropTypes.func
-      };
+App.propTypes = {
+  handleKegNew: PropTypes.func,
+  handleSellPint: PropTypes.func,
+  handleKegEdit: PropTypes.func,
+  kegFocus: PropTypes.object,
+  handleNewKegSelected: PropTypes.func
+};
 
-      export default App;
+export default App;

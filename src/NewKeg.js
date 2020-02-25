@@ -161,7 +161,8 @@ function NewKeg(props){
 }
 
 NewKeg.propTypes = {
-  onKegNew: PropTypes.func
+  onKegNew: PropTypes.func,
+  history: PropTypes.func
 };
 
 
