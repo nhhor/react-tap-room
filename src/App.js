@@ -73,6 +73,7 @@ class App extends React.Component {
   }
 
   handleKegEdit(keg){
+    this.setState({kegFocus: null})
     const newKegList = this.state.kegList.slice();
     const thisKeg = newKegList.find(e => e.id === keg.id)
     thisKeg.name = keg.name
@@ -82,7 +83,6 @@ class App extends React.Component {
     thisKeg.price = keg.price
     thisKeg.stock = keg.stock
     thisKeg.description = keg.description
-    thisKeg.formattedWaitTime = (keg.tappedOn).fromNow(true);
     thisKeg.tappedOn = keg.tappedOn
     this.setState({kegList: newKegList});
   }
@@ -96,7 +96,6 @@ class App extends React.Component {
 
   handleNewKegSelected(keg){
     this.setState({kegFocus: keg});
-    console.log(this.state.kegFocus);
   }
 
   componentDidMount() {
@@ -104,6 +103,15 @@ class App extends React.Component {
     this.updateKegTappedTime(),
     1000);
   }
+
+  componentDidUpdate() {
+    //troublshooting editKeg input defaultValuse, converted to names functions so not called.
+    function test() {setTimeout(() => {
+      this.setState({kegFocus: null})
+      console.log(this.state.kegFocus)
+    }, 6000);
+  }
+}
 
   updateKegTappedTime() {
     let newkegList = this.state.kegList.slice();

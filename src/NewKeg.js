@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 import Moment from 'moment';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 
 function NewKeg(props){
@@ -26,6 +27,8 @@ function NewKeg(props){
     _price = '';
     _stock = '';
     _description = '';
+
+    props.history.push('/Employee');
   }
 
   return (
@@ -162,4 +165,4 @@ NewKeg.propTypes = {
 };
 
 
-export default NewKeg;
+export default withRouter(NewKeg);
