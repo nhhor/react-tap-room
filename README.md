@@ -8,7 +8,7 @@
 
 This project was made as part of a coding project for Noah Horwitz, a student at _[Epicodus](http://www.epicodus.com)_, a vocational school for technology careers based in Portland, OR. The project is designed to create a tap room app in React where a bar or kombucha store can track their kegs.
 
-The fully deployed project is hosted on GH-Pages [HERE](https://nhhor.github.io/react-tap-room).
+The fully deployed project is hosted on GH-Pages [HERE](https://nhhor.github.io/react-tap-room/).
 
 ## Setup/Installation instructions:
 
