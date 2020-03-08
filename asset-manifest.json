@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-tap-room/static/css/main.2aae2077.chunk.css",
+    "main.js": "/react-tap-room/static/js/main.29b65eae.chunk.js",
+    "main.js.map": "/react-tap-room/static/js/main.29b65eae.chunk.js.map",
+    "runtime-main.js": "/react-tap-room/static/js/runtime-main.41e5ae24.js",
+    "runtime-main.js.map": "/react-tap-room/static/js/runtime-main.41e5ae24.js.map",
+    "static/js/2.7d82e44c.chunk.js": "/react-tap-room/static/js/2.7d82e44c.chunk.js",
+    "static/js/2.7d82e44c.chunk.js.map": "/react-tap-room/static/js/2.7d82e44c.chunk.js.map",
+    "index.html": "/react-tap-room/index.html",
+    "precache-manifest.9fc04189ecc8a6726fada12acea74bb4.js": "/react-tap-room/precache-manifest.9fc04189ecc8a6726fada12acea74bb4.js",
+    "service-worker.js": "/react-tap-room/service-worker.js",
+    "static/css/main.2aae2077.chunk.css.map": "/react-tap-room/static/css/main.2aae2077.chunk.css.map",
+    "static/js/2.7d82e44c.chunk.js.LICENSE.txt": "/react-tap-room/static/js/2.7d82e44c.chunk.js.LICENSE.txt",
+    "static/media/InfoIcon.svg": "/react-tap-room/static/media/InfoIcon.f65ba043.svg",
+    "static/media/KegIcon.svg": "/react-tap-room/static/media/KegIcon.5fa890b5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.41e5ae24.js",
+    "static/js/2.7d82e44c.chunk.js",
+    "static/css/main.2aae2077.chunk.css",
+    "static/js/main.29b65eae.chunk.js"
+  ]
+}
